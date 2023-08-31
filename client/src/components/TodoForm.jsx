@@ -11,7 +11,11 @@ export default function TodoForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (text.trim() === '') return;
-        dispatch(addTodo({ text }));
+        dispatch(
+            addTodo({
+                text: text,
+                id: new Date().getTime()
+            }));
         setText('');
     }
 
@@ -26,7 +30,7 @@ export default function TodoForm() {
                 value={text}
                 onChange={handleChange}
             />
-
+            <button type='submit'>Add</button>
         </form>
     )
 }
